@@ -20,7 +20,7 @@ function handleInput(e) {
 }
 
 function createUI() {
-  itemList.innerHTML = ""; 
+  itemList.innerHTML = "";
 
   allTodos.forEach((todo, index) => {
     let li = document.createElement("li");
@@ -28,16 +28,14 @@ function createUI() {
       "flex",
       "justify-between",
       "items-center",
-      "bg-gray-200",
-      "p-2",
-      "rounded",
-      "shadow"
+      "bg-gray-100",
+      "p-2"
     );
 
     let input = document.createElement("input");
     input.type = "checkbox";
     input.checked = todo.isDone;
-    input.classList.add("mr-2", "cursor-pointer");
+   
     input.addEventListener("change", () => {
       todo.isDone = input.checked;
       if (todo.isDone) {
@@ -50,24 +48,15 @@ function createUI() {
     let p = document.createElement("p");
     p.innerText = todo.name;
     if (todo.isDone) {
-      p.classList.add("line-through"); 
+      p.classList.add("line-through");
     }
 
     let span = document.createElement("span");
     span.innerText = "X";
-    span.classList.add(
-      "ml-2",
-      "px-2",
-      "py-1",
-      "bg-red-500",
-      "text-white",
-      "rounded",
-      "cursor-pointer",
-      "hover:bg-red-700"
-    );
+    span.classList.add("p-2", "bg-red-500", "text-white");
     span.addEventListener("click", () => {
-      allTodos.splice(index, 1); 
-      createUI(); 
+      allTodos.splice(index, 1);
+      createUI();
     });
 
     li.append(input, p, span);
