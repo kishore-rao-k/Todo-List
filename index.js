@@ -7,7 +7,7 @@ inputItem.addEventListener("keyup", handleInput);
 
 function handleInput(e) {
   let inputText = inputItem.value.trim();
-//   console.log(e.keyCode);
+
   if (e.keyCode === 13 && inputText !== "") {
     let todo = {
       name: inputText,
@@ -20,7 +20,7 @@ function handleInput(e) {
 }
 
 function createUI() {
-  itemList.innerHTML = ""; // Clear list before re-rendering
+  itemList.innerHTML = ""; 
 
   allTodos.forEach((todo, index) => {
     let li = document.createElement("li");
@@ -50,7 +50,7 @@ function createUI() {
     let p = document.createElement("p");
     p.innerText = todo.name;
     if (todo.isDone) {
-      p.classList.add("line-through"); // ✅ Fix: Apply conditionally
+      p.classList.add("line-through"); 
     }
 
     let span = document.createElement("span");
@@ -66,8 +66,8 @@ function createUI() {
       "hover:bg-red-700"
     );
     span.addEventListener("click", () => {
-      allTodos.splice(index, 1); // Remove todo
-      createUI(); // Re-render UI
+      allTodos.splice(index, 1); 
+      createUI(); 
     });
 
     li.append(input, p, span);
